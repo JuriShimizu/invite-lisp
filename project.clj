@@ -10,6 +10,7 @@
   :min-lein-version "2.0.0"
   :plugins [[environ/environ.lein "0.2.1"]
             [lein-ring "0.8.13"]]
+  :ring {:handler clojure-getting-started.web/-main}
   :hooks [environ.leiningen.hooks]
   :uberjar-name "clojure-getting-started-standalone.jar"
   :profiles {:production {:env {:production true}}})
