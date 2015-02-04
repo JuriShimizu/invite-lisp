@@ -14,7 +14,7 @@
 (defroutes app
   (GET "/" []
        {:body "{text: '< Hello, world!!'}"
-        :headers {"Content-Type" "text/json"}})
+        :headers {"Content-Type" "application/json"}})
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
