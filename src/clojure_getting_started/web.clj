@@ -13,7 +13,7 @@
 
 (defroutes app
   (GET "/" []
-       "test-return")
+       "{text: '< Hello, world!!'}")
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
