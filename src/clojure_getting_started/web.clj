@@ -13,7 +13,7 @@
 
 (defroutes app
   (GET "/" []
-       (splash))
+       "test-return")
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
