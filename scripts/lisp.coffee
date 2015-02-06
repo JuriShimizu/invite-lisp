@@ -8,8 +8,22 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
+util = require 'util'
 module.exports = (robot) ->
-  robot.respond /test/i, (msg) ->
+  robot.hear /lgtm(?:\s*)$/i, (msg) ->
+    msg.http('http://www.lgtm.in/g')
+      .header('Accept', 'application/json')
+      .get() (err, res, body) ->
+        if err
+          msg.send util.inspect err
+        else
+          try
+            data = JSON.parse(body)
+            msg.send data.actualImageUrl
+          catch _err
+            msg.send "Ran into an error parsing JSON :("
+
+  robot.hear /test/i, (msg) ->
     msg.send "ok"
 
   # robot.hear /badger/i, (msg) ->
